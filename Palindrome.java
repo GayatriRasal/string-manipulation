@@ -23,12 +23,4 @@ public class Palindrome {
 
         return true;
     }
-    public static void main(String[] args) {
-        String testString = "madam";
-        if (isPalindrome(testString)) {
-            System.out.println(testString + " is a palindrome.");
-        } else {
-            System.out.println(testString + " is not a palindrome.");
-        }
-}
 }
