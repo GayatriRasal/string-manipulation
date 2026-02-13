@@ -2,33 +2,39 @@ import java.util.Arrays;
 
 public class AnagramChecker {
 
-    public static boolean isAnagram(String str1, String str2) {
-        
-        // Remove spaces and convert to lowercase
-        str1 = str1.replaceAll("\\s", "").toLowerCase();
-        str2 = str2.replaceAll("\\s", "").toLowerCase();
+    public boolean isAnagram(String str1, String str2) {
 
-        // If lengths are different, not anagram
-        if (str1.length() != str2.length()) {
+        // Null check
+        if (str1 == null || str2 == null) {
+            return false;
+        }
+        String st1,st2;
+        // Remove all whitespace and convert to lowercase
+        st1 = str1.replaceAll("\\s+", "").toLowerCase();
+        st2 = str2.replaceAll("\\s+", "").toLowerCase();
+
+        // Length check
+        if (st1.length() != st2.length()) {
             return false;
         }
 
-        // Convert to character arrays
-        char[] arr1 = str1.toCharArray();
-        char[] arr2 = str2.toCharArray();
+        // If both are empty after cleaning
+        if (st1.length() == 0) {
+            return true;
+        }
+
+        // Convert to char arrays
+        char[] arr1 = st1.toCharArray();
+        char[] arr2 = st2.toCharArray();
 
         // Sort both arrays
         Arrays.sort(arr1);
         Arrays.sort(arr2);
 
-        // Compare arrays
-        return Arrays.equals(arr1, arr2);
+        // Compare
+        boolean res= Arrays.equals(arr1, arr2);
+        System.out.println("Checking: " + str1 + " & " + str2 + " -> " + res);
+        return res;
     }
-
-    public static void main(String[] args) {
-        String s1 = "Listen";
-        String s2 = "Silent";
-
-        System.out.println(isAnagram(s1, s2));  // true
-    }
+    
 }
